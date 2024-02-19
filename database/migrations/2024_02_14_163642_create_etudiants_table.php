@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('telephone');
             $table->string('email');
             $table->string('date_de_naissance');
-            $table->string('email');
             $table->unsignedBigInteger('ville_id');
             $table->timestamps();
             $table->foreign('ville_id')->references('id')->on('villes')->onDelete('cascade');

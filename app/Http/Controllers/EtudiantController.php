@@ -11,10 +11,8 @@ class EtudiantController extends Controller
 {
     public function index()
     {
-        //select * from tasks;
         $etudiants = Etudiant::all();
         return view('etudiant.index', ["etudiants" => $etudiants]);
-        //return $tasks[0]['title'];
     }
 
     /**
@@ -68,46 +66,47 @@ class EtudiantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Etudiant $task)
+    public function edit(Etudiant $etudiant)
     {
-        return view('task.edit', ["task" => $task]);
+        $villes = Ville::all();
+        return view('etudiant.edit', ["etudiant" => $etudiant, "villes" => $villes]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Etudiant $task)
+    public function update(Request $request, Etudiant $etudiant)
     {
         $request->validate([
-            'title' => 'required|max:50',
-            'description' => 'required|string',
-            'completed' => 'nullable|boolean',
-            'due_date' => 'nullable|date'
+            'nom' => 'required|max:50',
+            'adresse' => 'required|max:50',
+            //Ref : https://laracasts.com/discuss/channels/general-discussion/mobile-phone-number-validation
+            //Credits vont à Mahaveer
+            'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'email' => 'required|email',
+            'date_de_naissance' => 'required|date',
+            'ville_id' => 'required|numeric'
 
         ]);
 
-        $task->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'completed' => $request->completed,
-            'due_date' => $request->due_date
+        $etudiant->update([
+            'nom' => $request->nom,
+            'adresse' => $request->adresse,
+            'telephone' => $request->telephone,
+            'email' => $request->email,
+            'date_de_naissance' => $request->date_de_naissance,
+            'ville_id' => $request->ville_id
         ]);
 
-        return redirect()->route('task.show', $task->id)->with('success', 'Task edited successfully');
+        return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Étudiant modifier avec succès!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Etudiant $task)
+    public function destroy(Etudiant $etudiant)
     {
-        $task->delete();
-        return redirect()->route('task.index')->with('success', 'Task deleted successfully');
-    }
-
-    public function completed($completed)
-    {
-        $task = Etudiant::select()->where('completed', $completed)->get();
-        return view('task.completed', ["tasks" => $task]);
+        $etudiant->delete();
+        return redirect()->route('etudiant.index')->with('success', 'Étudiant supprimer avec succès!');
     }
 }

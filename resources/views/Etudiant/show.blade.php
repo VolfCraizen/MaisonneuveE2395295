@@ -23,7 +23,7 @@
             </div>
             <div class="card-footer">
                 <div class="d-flex justify-content-end gap-3">
-                {{-- <a class="btn btn-secondary" href="{{route('etudiant.edit', $etudiant->id)}}">Modifier</a> --}}
+                    <a class="btn btn-secondary" href="{{route('etudiant.edit', $etudiant->id)}}">Modifier</a>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
                         Delete
                     </button>

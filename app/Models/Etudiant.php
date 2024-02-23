@@ -14,7 +14,7 @@ class Etudiant extends Model
         'adresse',
         'telephone',
         'email',
-        'data_de_naissance',
+        'date_de_naissance',
         'ville_id'
     ];
 

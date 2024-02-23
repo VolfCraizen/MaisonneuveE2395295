@@ -17,4 +17,9 @@ class Etudiant extends Model
         'data_de_naissance',
         'ville_id'
     ];
+
+    public function ville(){
+        //En théorie utilisé dans le TP
+        return $this->belongsTo(Ville::class);
+    }
 }

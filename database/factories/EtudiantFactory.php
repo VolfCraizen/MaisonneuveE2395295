@@ -24,7 +24,7 @@ class EtudiantFactory extends Factory
             'telephone' => $this->faker->numerify('###-###-####'),
             'email' => $this->faker->unique->safeEmail,
             //Ref: https://fakerphp.github.io/formatters/date-and-time/
-            'date_de_naissance' => $this->faker->unixTime,
+            'date_de_naissance' => $this->faker->date('Y_m_d'),
             //Ref: https://laracasts.com/discuss/channels/laravel/factory-with-a-foreign-key
             //Credit va à viper75x
             'ville_id' => \App\Models\Ville::inRandomOrder()->first()->id

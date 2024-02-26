@@ -16,7 +16,7 @@
 
                 <div class="card-body">
                     <div class="d-flex justify-content-end gap-3">
-                        <a class="btn btn-primary" href="{{route('Etudiant.show', $etudiant->id)}}">Voir</a>
+                        <a class="btn btn-primary" href="{{route('etudiant.show', $etudiant->id)}}">Voir</a>
                         {{-- <a class="btn btn-secondary" href="{{route('etudiant.edit', $etudiant->id)}}">Modifier</a> --}}
                     </div>
                 </div>

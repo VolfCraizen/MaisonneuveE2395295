@@ -11,7 +11,7 @@
         <h1 class="text-center text-white p-3">Collège de maisonneuve</h1>
         
         <nav class="navbar navbar-expand-sm justify-content-end" aria-label="Third navbar example">
-            <a class="btn btn-secondary me-3" href="{{route('Etudiant.create')}}">Créer un étudiant</a>
+            <a class="btn btn-secondary me-3" href="{{route('etudiant.create')}}">Créer un étudiant</a>
         </nav>
     </header>
 

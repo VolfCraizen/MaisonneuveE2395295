@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <a class="btn btn-primary w-25" href="{{route('Etudiant.index')}}">Retour à la liste d'étudiants</a>
+    <a class="btn btn-primary w-25" href="{{route('etudiant.index')}}">Retour à la liste d'étudiants</a>
 
 </div>
 

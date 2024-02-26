@@ -18,8 +18,8 @@ class Etudiant extends Model
         'ville_id'
     ];
 
+    //Associe les villes aux étudiants
     public function ville(){
-        //En théorie utilisé dans le TP
         return $this->belongsTo(Ville::class);
     }
 }

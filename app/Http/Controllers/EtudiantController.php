@@ -20,9 +20,6 @@ class EtudiantController extends Controller
      */
     public function show(Etudiant $etudiant)
     {
-
-        Etudiant::select()->join('villes', 'ville_id', '=', 'villes.id')->get();
-
         return view('etudiant.show', ["etudiant" => $etudiant]);
     }
 
@@ -40,6 +37,7 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'nom' => 'required|max:50',
             'adresse' => 'required|max:50',

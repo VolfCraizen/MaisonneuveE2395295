@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', 'Add Task')
+@section('title', 'Ajout étudiant')
 @section('content')
 
 
@@ -61,13 +61,14 @@
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="ville_id" class="form-title fs-4">Ville : </label>
                             <select class="w-75" name="ville_id" id="ville_id">
+                                <option selected>Veuillez choisir une ville</option>
                                 @foreach($villes as $ville)
                                     <option value="{{$ville->id}}">{{$ville->nom}}</option>
                                 @endforeach
                             </select>
-                            @if($errors->has('email'))
+                            @if($errors->has('ville_id'))
                             <div class="text-danger mt-2">
-                                {{$errors->first('email')}}
+                                {{$errors->first('ville_id')}}
                             </div>
                             @endif
                         </div>

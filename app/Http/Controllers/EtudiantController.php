@@ -12,7 +12,7 @@ class EtudiantController extends Controller
     public function index()
     {
         $etudiants = Etudiant::all();
-        return view('etudiant.index', ["etudiants" => $etudiants]);
+        return view('Etudiant.index', ["etudiants" => $etudiants]);
     }
 
     /**
@@ -20,10 +20,7 @@ class EtudiantController extends Controller
      */
     public function show(Etudiant $etudiant)
     {
-
-        Etudiant::select()->join('villes', 'ville_id', '=', 'villes.id')->get();
-
-        return view('etudiant.show', ["etudiant" => $etudiant]);
+        return view('Etudiant.show', ["etudiant" => $etudiant]);
     }
 
     /**
@@ -32,7 +29,7 @@ class EtudiantController extends Controller
     public function create()
     {
         $villes = Ville::all();
-        return view('etudiant.create', ["villes" => $villes]);
+        return view('Etudiant.create', ["villes" => $villes]);
     }
 
     /**
@@ -40,6 +37,7 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'nom' => 'required|max:50',
             'adresse' => 'required|max:50',
@@ -60,7 +58,7 @@ class EtudiantController extends Controller
             'ville_id' => $request->ville_id
         ]);
 
-        return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Étudiant créer avec succès!');
+        return redirect()->route('Etudiant.show', $etudiant->id)->with('success', 'Étudiant créer avec succès!');
     }
 
     /**
@@ -69,7 +67,7 @@ class EtudiantController extends Controller
     public function edit(Etudiant $etudiant)
     {
         $villes = Ville::all();
-        return view('etudiant.edit', ["etudiant" => $etudiant, "villes" => $villes]);
+        return view('Etudiant.edit', ["etudiant" => $etudiant, "villes" => $villes]);
     }
 
     /**
@@ -98,7 +96,7 @@ class EtudiantController extends Controller
             'ville_id' => $request->ville_id
         ]);
 
-        return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Étudiant modifier avec succès!');
+        return redirect()->route('Etudiant.show', $etudiant->id)->with('success', 'Étudiant modifier avec succès!');
     }
 
     /**
@@ -107,6 +105,6 @@ class EtudiantController extends Controller
     public function destroy(Etudiant $etudiant)
     {
         $etudiant->delete();
-        return redirect()->route('etudiant.index')->with('success', 'Étudiant supprimer avec succès!');
+        return redirect()->route('Etudiant.index')->with('success', 'Étudiant supprimer avec succès!');
     }
 }

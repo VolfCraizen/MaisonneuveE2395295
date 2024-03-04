@@ -46,7 +46,7 @@ class EtudiantController extends Controller
             'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'email' => 'required|email',
             'date_de_naissance' => 'required|date',
-            'ville_id' => 'required|numeric'
+            'ville_id' => 'required|exists:villes,id'
         ]);
 
         $etudiant = Etudiant::create([
@@ -83,7 +83,7 @@ class EtudiantController extends Controller
             'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'email' => 'required|email',
             'date_de_naissance' => 'required|date',
-            'ville_id' => 'required|numeric'
+            'ville_id' => 'required|exists:villes,id'
 
         ]);
 

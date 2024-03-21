@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Etudiant;
 use App\Models\Ville;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class EtudiantController extends Controller
 {
@@ -40,6 +42,7 @@ class EtudiantController extends Controller
 
         $request->validate([
             'nom' => 'required|max:50',
+            'password' => 'min:6|max:20',
             'adresse' => 'required|max:50',
             //Ref : https://laracasts.com/discuss/channels/general-discussion/mobile-phone-number-validation
             //Credits vont à Mahaveer
@@ -56,6 +59,12 @@ class EtudiantController extends Controller
             'email' => $request->email,
             'date_de_naissance' => $request->date_de_naissance,
             'ville_id' => $request->ville_id
+        ]);
+
+        $user = User::create([
+            'name' => $request->nom,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
 
         return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Étudiant créer avec succès!');

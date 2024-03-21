@@ -7,12 +7,23 @@
     <link href="{{asset('css/styles.css')}}" rel="stylesheet">
 </head>
 <body>
+    @php $locale = session()->get('locale') @endphp
+
     <header class="bg-primary p-1 container-fluid mb-5">
-        <h1 class="text-center text-white p-3">Collège de maisonneuve</h1>
-        
+        <h1 class="text-center text-white p-3">@lang('lang.logo')</h1>
+
         <nav class="navbar navbar-expand-sm justify-content-end" aria-label="Third navbar example">
-            <a class="btn btn-secondary me-3" href="{{route('etudiant.create')}}">Créer un étudiant</a>
-        </nav>
+            @auth
+                <a class="btn btn-secondary me-3" href="{{route('logout')}}">@lang('lang.logout')</a>
+                <a class="btn btn-secondary me-3" href="{{route('etudiant.create')}}">@lang('lang.etudiant_create')</a>
+            @else
+                <a class="btn btn-secondary me-3" href="{{route('login')}}">@lang('lang.login')</a>
+            @endauth
+
+            <a class="btn btn-secondary me-3" href="{{ route('lang', 'en') }}">English</a>
+            <a class="btn btn-secondary me-3" href="{{ route('lang', 'fr') }}">French</a>
+
+        </nav> 
     </header>
 
     <div class="container">

@@ -13,7 +13,8 @@ class EtudiantController extends Controller
 {
     public function index()
     {
-        $etudiants = Etudiant::all();
+        $etudiants = Etudiant::select()->orderby('nom')->paginate(5);
+
         return view('etudiant.index', ["etudiants" => $etudiants]);
     }
 

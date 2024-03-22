@@ -48,6 +48,10 @@ class AuthController extends Controller
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
         Auth::login($user);
+
+        // $userId = Auth::id();
+        // return $userId;
+        
         //Intended va rediriger vers la page que la personne essayait d'entrer avant de redirger vers la page par défaut. 
         //Ex: Si http://localhost:8000/users est la page qui à causer la demande de login, c'est là que l'utilisateur va être envoyer une fois connecté.
         return redirect()->intended(route('etudiant.index'))->withSuccess('Signed in');
@@ -82,8 +86,8 @@ class AuthController extends Controller
      */
     public function destroy()
     {
-           Session::flush();
-    Auth::logout();
-    return redirect(route('login'));
+        Session::flush();
+        Auth::logout();
+        return redirect(route('login'));
     }
 }

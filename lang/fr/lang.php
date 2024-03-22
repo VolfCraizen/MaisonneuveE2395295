@@ -5,13 +5,19 @@
 return [
 
     'logo' => 'Collège de maisonneuve',
+    'welcome' => 'Bienvenue',
     'login' => 'Connexion',
     'logout' => 'Déconnexion',
+    'etudiant_list' => 'Aller à la liste d\'étudiants',
     'etudiant_create' => 'Créer un étudiant',
+    'post_list' => 'Forum',
+    'post_create' => 'Créer un article',
 
     'etudiant_creation' => 'Création d\'un profil étudiant',
     'etudiant_modification' => 'Modification d\'un profil étudiant',
     'name' => 'Nom',
+    'title' => 'Titre',
+    'text' => 'Texte',
     'password' => 'Mot de passe',
     'adress' => 'Adresse',
     'phone' => 'Téléphone',
@@ -19,7 +25,7 @@ return [
     'DoB' => 'Date de naissance',
     'city' => 'Ville',
     'create' => 'Créer',
-    'return_home' => 'Retour à la liste d\'étudiants',
+    'return_home' => 'Retour à la page d\'accueil',
     'ville_selection' => 'Veuillez choisir une ville',
     'edit' => 'Modifier',
     'delete' => 'Supprimer',
@@ -32,5 +38,8 @@ return [
 
     'no' => 'Non',
     'yes' => 'Oui',
+
+    'fr' => 'Français',
+    'en' => 'Anglais',
 
 ];

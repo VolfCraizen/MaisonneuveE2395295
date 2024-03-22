@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 @section('title', 'Étudiant')
 
 
@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <a class="btn btn-primary w-25" href="{{route('etudiant.index')}}">@lang('lang.return_home')</a>
+    <a class="btn btn-primary w-75" href="{{route('etudiant.index')}}">@lang('lang.return_etudiant')</a>
 
 </div>
 

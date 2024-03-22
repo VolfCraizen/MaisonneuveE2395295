@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('date_de_naissance');
             $table->unsignedBigInteger('ville_id');
             $table->timestamps();
+            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('ville_id')->references('id')->on('villes')->onDelete('cascade');
         });
     }

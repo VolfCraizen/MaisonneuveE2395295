@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 @section('title', 'Modification étudiant')
 @section('content')
 
@@ -90,7 +90,7 @@
                 </div>
                 <div class="card-footer d-flex row justify-content-center">
 
-                    <a class="btn btn-primary w-75" href="{{route('etudiant.index')}}">@lang('lang.return_home')</a>
+                <a class="btn btn-primary w-75" href="{{route('etudiant.index')}}">@lang('lang.return_etudiant')</a>
                     
                 </div>
             </div>

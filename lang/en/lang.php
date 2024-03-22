@@ -5,13 +5,19 @@
 return [
 
     'logo' => 'College of Maisonneuve',
+    'welcome' => 'Welcome',
     'login' => 'Login',
     'logout' => 'Logout',
+    'etudiant_list' => 'Go to the student list',
     'etudiant_create' => 'Create a student',
+    'post_list' => 'Forum',
+    'post_create' => 'Create an article',
 
     'etudiant_creation' => 'Student profile creation',
     'etudiant_modification' => 'Edit student profile',
     'name' => 'Name',
+    'title' => 'Title',
+    'text' => 'Text',
     'password' => 'Password',
     'adress' => 'Adress',
     'phone' => 'Phone',
@@ -19,7 +25,7 @@ return [
     'DoB' => 'Date of birth',
     'city' => 'City',
     'create' => 'Create',
-    'return_home' => 'Return to the student list',
+    'return_home' => 'Return to the home page',
     'ville_selection' => 'Please select a city',
     'edit' => 'Edit',
     'delete' => 'Delete',
@@ -32,5 +38,8 @@ return [
 
     'no' => 'No',
     'yes' => 'Yes',
+
+    'fr' => 'French',
+    'en' => 'English',
 
 ];

@@ -10,7 +10,7 @@
     @php $locale = session()->get('locale') @endphp
 
     <header class="bg-primary p-1 container-fluid mb-5">
-        <h1 class="text-center text-white p-3">@lang('lang.logo')</h1>
+        <a href="{{route('home')}}"><h1 class="text-center text-white p-3">@lang('lang.logo')</h1></a>
 
         <nav class="navbar navbar-expand-sm justify-content-end" aria-label="Third navbar example">
             @auth
@@ -20,8 +20,8 @@
                 <a class="btn btn-secondary me-3" href="{{route('login')}}">@lang('lang.login')</a>
             @endauth
 
-            <a class="btn btn-secondary me-3" href="{{ route('lang', 'en') }}">English</a>
-            <a class="btn btn-secondary me-3" href="{{ route('lang', 'fr') }}">French</a>
+            <a class="btn btn-secondary me-3" href="{{ route('lang', 'en') }}">@lang('lang.en')</a>
+            <a class="btn btn-secondary me-3" href="{{ route('lang', 'fr') }}">@lang('lang.fr')</a>
 
         </nav> 
     </header>

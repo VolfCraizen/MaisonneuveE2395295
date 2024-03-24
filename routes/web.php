@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SetLocaleController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +17,31 @@ use App\Http\Controllers\EtudiantController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
+
 Route::get('/etudiant', [EtudiantController::class, 'index'])->name('etudiant.index');
 Route::get('/etudiant/{etudiant}', [EtudiantController::class, 'show'])->name('etudiant.show');
 
-Route::get('/create/etudiant', [EtudiantController::class, 'create'])->name('etudiant.create');
-Route::post('/create/etudiant', [EtudiantController::class, 'store'])->name('etudiant.store');
+Route::get('/post', [PostController::class, 'index'])->name('post.index');
+
 Route::get('/edit/etudiant/{etudiant}', [EtudiantController::class, 'edit'])->name('etudiant.edit');
 Route::put('/edit/etudiant/{etudiant}', [EtudiantController::class, 'update'])->name('etudiant.update');
 Route::delete('/etudiant/{etudiant}', [EtudiantController::class, 'destroy'])->name('etudiant.delete');
+
+Route::middleware('auth')->group(function(){
+
+    Route::get('/create/etudiant', [EtudiantController::class, 'create'])->name('etudiant.create');
+    Route::post('/create/etudiant', [EtudiantController::class, 'store'])->name('etudiant.store');
+
+    Route::get('/create/post', [PostController::class, 'create'])->name('post.create');
+    Route::post('/create/post', [PostController::class, 'store'])->name('post.store');
+
+});
+
+Route::get('/login', [AuthController::class, 'create'])->name('login');
+Route::post('/login', [AuthController::class, 'store'])->name('login.store');
+Route::get('/logout', [AuthController::class, 'destroy'])->name('logout')->middleware('auth');
+
+Route::get('/lang/{locale}', [SetLocaleController::class, 'index'])->name('lang');

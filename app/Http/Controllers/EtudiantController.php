@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Etudiant;
 use App\Models\Ville;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class EtudiantController extends Controller
 {
     public function index()
     {
-        $etudiants = Etudiant::all();
+        $etudiants = Etudiant::select()->orderby('nom')->paginate(5);
+
         return view('etudiant.index', ["etudiants" => $etudiants]);
     }
 
@@ -40,13 +43,14 @@ class EtudiantController extends Controller
 
         $request->validate([
             'nom' => 'required|max:50',
+            'password' => 'min:6|max:20',
             'adresse' => 'required|max:50',
             //Ref : https://laracasts.com/discuss/channels/general-discussion/mobile-phone-number-validation
             //Credits vont à Mahaveer
             'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'email' => 'required|email',
             'date_de_naissance' => 'required|date',
-            'ville_id' => 'required|numeric'
+            'ville_id' => 'required|exists:villes,id'
         ]);
 
         $etudiant = Etudiant::create([
@@ -56,6 +60,12 @@ class EtudiantController extends Controller
             'email' => $request->email,
             'date_de_naissance' => $request->date_de_naissance,
             'ville_id' => $request->ville_id
+        ]);
+
+        $user = User::create([
+            'name' => $request->nom,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
 
         return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Étudiant créer avec succès!');
@@ -83,7 +93,7 @@ class EtudiantController extends Controller
             'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'email' => 'required|email',
             'date_de_naissance' => 'required|date',
-            'ville_id' => 'required|numeric'
+            'ville_id' => 'required|exists:villes,id'
 
         ]);
 

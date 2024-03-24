@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 @section('title', 'Modification étudiant')
 @section('content')
 
@@ -22,7 +22,16 @@
                             @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
-                            <label for="adresse" class="form-title fs-4">Adresse : </label>
+                            <label for="password" class="form-title fs-4">@lang('lang.password') : </label>
+                            <input class="w-75" type="password" id="password" name="password">
+                            @if($errors->has('password'))
+                            <div class="text-danger mt-2">
+                                {{$errors->first('password')}}
+                            </div>
+                            @endif
+                        </div>
+                        <div class="mb-3 d-flex row justify-content-center text-center">
+                            <label for="adresse" class="form-title fs-4">@lang('lang.adress') : </label>
                             <input class="w-75" type="text" id="adresse" name="adresse" value="{{old('adresse', $etudiant->adresse)}}">
                             @if($errors->has('adresse'))
                             <div class="text-danger mt-2">
@@ -31,7 +40,7 @@
                             @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
-                            <label for="telephone" class="form-title fs-4">Telephone : </label>
+                            <label for="telephone" class="form-title fs-4">@lang('lang.phone') : </label>
                             <input class="w-75" type="text" id="telephone" name="telephone" value="{{old('telephone', $etudiant->telephone)}}">
                             @if($errors->has('telephone'))
                             <div class="text-danger mt-2">
@@ -40,7 +49,7 @@
                             @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
-                            <label for="email" class="form-title fs-4">Email : </label>
+                            <label for="email" class="form-title fs-4">@lang('lang.email') : </label>
                             <input class="w-75" type="email" id="email" name="email" value="{{old('email', $etudiant->email)}}">
                             @if($errors->has('email'))
                             <div class="text-danger mt-2">
@@ -49,7 +58,7 @@
                             @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
-                            <label for="date_de_naissance" class="form-title fs-4">Date de naissance : </label>
+                            <label for="date_de_naissance" class="form-title fs-4">@lang('lang.DoB') : </label>
                             <input class="w-75" type="date" id="date_de_naissance" name="date_de_naissance" value="{{old('date_de_naissance', $etudiant->date_de_naissance)}}">
                             @if($errors->has('date_de_naissance'))
                             <div class="text-danger mt-2">
@@ -58,7 +67,7 @@
                             @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
-                            <label for="ville_id" class="form-title fs-4">Ville : </label>
+                            <label for="ville_id" class="form-title fs-4">@lang('lang.city') : </label>
                             <select class="w-75" name="ville_id" id="ville_id">
                                 @foreach($villes as $ville)
                                     @if($ville->id == $etudiant->ville_id)
@@ -75,13 +84,13 @@
                             @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center mt-5">
-                            <button type="submit" class="btn btn-secondary w-50">Modifier</button>
+                            <button type="submit" class="btn btn-secondary w-50">@lang('lang.edit')</button>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer d-flex row justify-content-center">
 
-                    <a class="btn btn-primary w-75" href="{{route('etudiant.index')}}">Retour à la liste d'étudiants</a>
+                <a class="btn btn-primary w-75" href="{{route('etudiant.index')}}">@lang('lang.return_etudiant')</a>
                     
                 </div>
             </div>

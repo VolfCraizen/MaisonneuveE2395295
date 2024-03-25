@@ -43,7 +43,7 @@ class DocumentController extends Controller
         $request->validate([
             'titre_en' => 'required|max:50',
             'titre_fr' => 'max:50',
-            'file.*'   => 'required|mimes:doc, pdf, zip'
+            'document'   => 'required|file|mimes:pdf,zip,doc'
         ]);
 
         $titre = [
@@ -56,7 +56,7 @@ class DocumentController extends Controller
         $fileName = $file->getClientOriginalName();
         $fileName = time().$fileName;
         $file->storeAs(path: 'public/uploads', name: $fileName);
-        
+
         Document::create([
             'titre' => $titre,
             'document' => $fileName,
@@ -64,7 +64,7 @@ class DocumentController extends Controller
             'user_id' => Auth::id()
         ]);
 
-        return back()->withSuccess('Document uploaded successfully!');
+        return redirect()->route('document.index')->with('success', 'Document uploaded successfully!');
 
     }
 

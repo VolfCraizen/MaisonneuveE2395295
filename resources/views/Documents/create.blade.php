@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="mb-3 d-flex row justify-content-center text-center">
-                            <input type="file" name="document" id="inputFile">
+                            <input type="file" name="document" id="document">
                             @if($errors->has('document'))
                             <div class="text-danger mt-2">
                                 {{$errors->first('document')}}
@@ -51,7 +51,7 @@
                 </div>
                 <div class="card-footer d-flex row justify-content-center">
 
-                    <a class="btn btn-primary w-75" href="{{route('post.index')}}">@lang('lang.return_document')</a>
+                    <a class="btn btn-primary w-75" href="{{route('document.index')}}">@lang('lang.return_document')</a>
                     
                 </div>
             </div>

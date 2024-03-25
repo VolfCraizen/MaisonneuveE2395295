@@ -48,14 +48,14 @@ class PostController extends Controller
         ];
         if($request->texte_fr != null) { $texte = $texte + ['fr' => $request->texte_fr];};
         
-        posts::create([
+        $post = posts::create([
             'titre' => $titre,
             'texte' => $texte,
             'date_de_creation' => date('Y-m-d'),
             'user_id' => Auth::id()
         ]);
 
-        return back()->withSuccess('Post created successfully!');
+        return redirect()->route('post.show', $post->id)->with('success', 'Post created successfully!');
     }
 
     /**

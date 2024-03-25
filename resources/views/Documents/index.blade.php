@@ -35,6 +35,8 @@
     </div>
 
     <div class="col-md-10">
+        <!-- Pagination -->
+        {{ $documents }}
         <a class="btn btn-primary w-25" href="{{route('document.create')}}">@lang('lang.document_creation')</a>
     </div>
 </div>

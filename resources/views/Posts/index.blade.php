@@ -31,6 +31,8 @@
 
     @endforelse
     <div class="col-md-10">
+        <!-- Pagination -->
+        {{ $posts }}
         <a class="btn btn-primary w-25" href="{{route('post.create')}}">@lang('lang.post_create')</a>
     </div>
 

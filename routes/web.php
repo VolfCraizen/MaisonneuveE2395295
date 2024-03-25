@@ -5,6 +5,8 @@ use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SetLocaleController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\DocumentController;
+use PhpParser\Comment\Doc;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,8 @@ Route::get('/etudiant/{etudiant}', [EtudiantController::class, 'show'])->name('e
 Route::get('/post', [PostController::class, 'index'])->name('post.index');
 Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
 
+Route::get('/document', [DocumentController::class, 'index'])->name('document.index');
+
 
 Route::middleware('auth')->group(function(){
 
@@ -40,6 +44,9 @@ Route::middleware('auth')->group(function(){
     Route::post('/create/post', [PostController::class, 'store'])->name('post.store');
     Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('post.delete');
     Route::get('/edit/post/{post}', [PostController::class, 'edit'])->name('post.edit');
+
+    Route::get('/create/document', [DocumentController::class, 'create'])->name('document.create');
+    Route::post('/create/document', [DocumentController::class, 'store'])->name('document.store');
 
 });
 

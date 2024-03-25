@@ -30,8 +30,8 @@
         <div class="alert alert-danger">Il n'y a aucun étudiant</div>
 
     @endforelse
-    <div>
-        {{ $etudiants }}
+    <div class="col-md-10">
+        <a class="btn btn-primary w-25" href="{{route('etudiant.create')}}">@lang('lang.etudiant_create')</a>
     </div>
 
 </div>

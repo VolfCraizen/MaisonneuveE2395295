@@ -8,9 +8,7 @@ return [
     'welcome' => 'Welcome',
     'login' => 'Login',
     'logout' => 'Logout',
-    'etudiant_list' => 'Go to the student list',
     'etudiant_create' => 'Create a student',
-    'post_list' => 'Forum',
     'post_create' => 'Create an article',
 
     'name' => 'Name',
@@ -29,10 +27,16 @@ return [
     'student_id' => 'Student id',
     'show' => 'Show',
 
-    'etudiant_creation' => 'Création d\'un profil étudiant',
-    'etudiant_modification' => 'Modification d\'un profil étudiant',
-    'post_creation' => 'Création d\'un article',
-    'post_modification' => 'Modification d\'un article',
+    'etudiant_list' => 'Go to the student list',
+    'post_list' => 'Forum',
+    'document_list' => 'Documents',
+
+    'etudiant_creation' => 'Student profile creation',
+    'etudiant_modification' => 'Edit student profile',
+    'post_creation' => 'Article creation',
+    'post_modification' => 'Edit Article',
+    'document_creation' => 'Upload document',
+    'document_modification' => 'Edit document',
 
     'warning' => 'Warning',
     'warning_delete_student_text1' => 'Do you want to delete this student?',
@@ -45,6 +49,10 @@ return [
     'return_home' => 'Return to the home page',
     'return_etudiant' => 'Return to the student list',
     'return_post' => 'Return to the forum',
+    'return_document' => 'Return to the document list',
+
+    'title_fr' => 'Title french',
+    'title_en' => 'Title english',
 
     'no' => 'No',
     'yes' => 'Yes',

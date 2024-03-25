@@ -10,7 +10,7 @@
         <div class="card mb-5">
             <div class="card-header d-flex justify-content-between">
                 <h4 class="card-title">{{isset($post->titre[app()->getLocale()]) ? $post->titre[app()->getLocale()] : $post->titre["en"]}}</h4>
-                <h4 class="card-title">{{$post->user_id}}</h4>
+                <h4 class="card-title">{{$post->user->name}}</h4>
             </div>
 
             <div class="card-body">

@@ -8,7 +8,7 @@
     <div class="col-md-10">
             <div class="card">
                 <div class="card-header d-flex justify-content-center">
-                    <h2 class="card-title">@lang('lang.post_creation')</h2>
+                    <h2 class="card-title">@lang('lang.document_creation')</h2>
                 </div>
                 <div class="card-body d-flex justify-content-center">
                     <form method="post" class="w-100" enctype="multipart/form-data">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="card-footer d-flex row justify-content-center">
 
-                    <a class="btn btn-primary w-75" href="{{route('post.index')}}">@lang('lang.return_post')</a>
+                    <a class="btn btn-primary w-75" href="{{route('post.index')}}">@lang('lang.return_document')</a>
                     
                 </div>
             </div>

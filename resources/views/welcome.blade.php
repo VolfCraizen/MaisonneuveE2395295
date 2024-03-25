@@ -12,8 +12,9 @@
                 </div>
                 <div class="card-body d-flex justify-content-center gap-3">
                     <a class="btn btn-primary w-25" href="{{route('etudiant.index')}}">@lang('lang.etudiant_list')</a>
+                    <a class="btn btn-primary w-25" href="{{route('post.index')}}">@lang('lang.post_list')</a>
                     @auth
-                        <a class="btn btn-primary w-25" href="{{route('post.index')}}">@lang('lang.post_list')</a>
+                        <a class="btn btn-primary w-25" href="{{route('document.index')}}">@lang('lang.document_list')</a>
                     @endauth
                 </div>
             </div>

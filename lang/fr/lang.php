@@ -6,12 +6,9 @@ return [
 
     'logo' => 'Collège de maisonneuve',
     'welcome' => 'Bienvenue',
+
     'login' => 'Connexion',
     'logout' => 'Déconnexion',
-    'etudiant_list' => 'Aller à la liste d\'étudiants',
-    'etudiant_create' => 'Créer un étudiant',
-    'post_list' => 'Forum',
-    'post_create' => 'Créer un article',
 
     'name' => 'Nom',
     'title' => 'Titre',
@@ -29,10 +26,16 @@ return [
     'student_id' => 'Numéro d\'étudiant',
     'show' => 'Voir',
 
-    'etudiant_creation' => 'Student profile creation',
-    'etudiant_modification' => 'Edit student profile',
-    'post_creation' => 'Article creation',
-    'post_modification' => 'Edit Article',
+    'etudiant_list' => 'Aller à la liste d\'étudiants',
+    'post_list' => 'Forum',
+    'document_list' => 'Documents',
+
+    'etudiant_creation' => 'Création d\'un profil étudiant',
+    'etudiant_modification' => 'Modification d\'un profil étudiant',
+    'post_creation' => 'Création d\'un article',
+    'post_modification' => 'Modification d\'un article',
+    'document_creation' => 'Soumettre un document',
+    'document_modification' => 'Modification d\'un document',
 
     'warning' => 'Attention',
     'warning_delete_student_text1' => 'Voulez-vous supprimer cette étudiant?',
@@ -45,6 +48,10 @@ return [
     'return_home' => 'Retour à la page d\'accueil',
     'return_etudiant' => 'Retour à la liste d\'étudiant',
     'return_post' => 'Retour au forum',
+    'return_document' => 'Retour à la liste de documents',
+
+    'title_fr' => 'Titre français',
+    'title_en' => 'Titre anglais',
 
     'no' => 'Non',
     'yes' => 'Oui',

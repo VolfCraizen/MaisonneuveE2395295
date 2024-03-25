@@ -59,7 +59,7 @@ class DocumentController extends Controller
         
         Document::create([
             'titre' => $titre,
-            'document' => $request->document,
+            'document' => $fileName,
             'date_de_publication' => date('Y-m-d'),
             'user_id' => Auth::id()
         ]);

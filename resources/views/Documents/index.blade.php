@@ -6,7 +6,7 @@
 @php $locale = session()->get('locale') @endphp
 
 <div class="row justify-content-center">
-    <div class="col md 12">
+    <div class="col-md-10">
         <div class="card-header">
             <h5 class="card-title">Documents</h5>
         </div>
@@ -21,10 +21,10 @@
                 <tbody>
                     @foreach($documents as $document)
                     <tr>
-                        <td>{{ document->titre }}</td>
-                        <td>{{ document->document }}</td>
-                        <td>{{ document->date_de_publication }}</td>
-                        <td>{{ document->user_id }}</td>
+                        <td>{{ isset($document->titre[app()->getLocale()]) ? $document->titre[app()->getLocale()] : $document->titre["en"] }}</td>
+                        <td>{{ $document->document }}</td>
+                        <td>{{ $document->date_de_publication }}</td>
+                        <td>{{ $document->user->name }}</td>
 
                     </tr>
                     @endforeach
@@ -32,6 +32,10 @@
             </table>
 
         </div>
+    </div>
+
+    <div class="col-md-10">
+        <a class="btn btn-primary w-25" href="{{route('document.create')}}">@lang('lang.document_creation')</a>
     </div>
 </div>
 

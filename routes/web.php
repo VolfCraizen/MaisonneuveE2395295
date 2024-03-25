@@ -47,6 +47,9 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/create/document', [DocumentController::class, 'create'])->name('document.create');
     Route::post('/create/document', [DocumentController::class, 'store'])->name('document.store');
+    Route::get('/edit/document/{document}', [DocumentController::class, 'edit'])->name('document.edit');
+    Route::put('/edit/document/{document}', [DocumentController::class, 'update'])->name('document.update');
+    Route::delete('/document/{document}', [DocumentController::class, 'destroy'])->name('document.delete');
 
 });
 

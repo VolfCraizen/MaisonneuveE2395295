@@ -42,6 +42,7 @@ return [
     'warning_delete_student_text2' => 'Ils seront supprimer de manière permanente.',
     'warning_delete_post_text1' => 'Voulez-vous supprimer cette article?',
     'warning_delete_post_text2' => 'Il sera supprimer de manière permanente.',
+    'warning_delete_document_text' => 'La suppression est immédiate et permanente',
 
     'author' => 'Auteur',
 

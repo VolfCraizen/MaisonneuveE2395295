@@ -26,6 +26,21 @@
                         <td>{{ $document->date_de_publication }}</td>
                         <td>{{ $document->user->name }}</td>
 
+                        <!-- Vérification de l'utilisateur -->
+                        @if(auth()->user()->id === $document->user_id)
+                            <th> <a class="btn btn-secondary" href="{{route('document.edit', $document->id)}}">@lang('lang.edit')</a></th>
+                            <th>            
+                                <form action="{{route('document.delete', $document->id)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-sm btn-danger">@lang('lang.delete')</button>
+                                </form>
+                            </th>
+                            <th>
+                                <p>@lang('lang.warning')! @lang('lang.warning_delete_document_text') !</p>
+                            </th>
+                        @endif
+
                     </tr>
                     @endforeach
                 </tbody>
@@ -40,7 +55,6 @@
         <a class="btn btn-primary w-25" href="{{route('document.create')}}">@lang('lang.document_creation')</a>
     </div>
 </div>
-
 
 </div>
 

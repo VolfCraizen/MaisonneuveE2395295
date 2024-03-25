@@ -43,6 +43,7 @@ return [
     'warning_delete_student_text2' => 'They will be deleted permenantly.',
     'warning_delete_post_text1' => 'Do you want to delete this article?',
     'warning_delete_post_text2' => 'It will be deleted permenantly.',
+    'warning_delete_document_text' => 'Deletion is instant and permanent',
 
     'author' => 'Author',
 

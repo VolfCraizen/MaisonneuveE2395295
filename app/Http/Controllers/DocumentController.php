@@ -6,8 +6,8 @@ use App\Models\document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\File;
-use League\CommonMark\Node\Block\Document as BlockDocument;
+use Illuminate\Support\Facades\File;
+
 
 class DocumentController extends Controller
 {
@@ -89,6 +89,13 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
+
+        if(Auth::id() === $document->user_id){
+            File::delete(app_path().'/public/uploads/'.$document->document);
+            $document->delete();
+            return redirect()->route('document.index')->with('success', 'Document supprimer avec succès!');
+        }
+        return redirect()->route('document.index');
 
     }
 }

@@ -74,6 +74,8 @@ class DocumentController extends Controller
     public function edit(Document $document)
     {
 
+        return view('documents.edit', ["document" => $document]);
+
     }
 
     /**
@@ -81,6 +83,32 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
+
+        $request->validate([
+            'titre_en' => 'required|max:50',
+            'titre_fr' => 'max:50',
+            'document'   => 'required|file|mimes:pdf,zip,doc'
+        ]);
+
+        $titre = [
+            'en' => $request->titre_en,
+        ];
+        if($request->titre_fr != null) { $titre = $titre + ['fr' => $request->titre_fr];};
+
+        //Envoi le fichier dans le dossier uploads dans storage/app/public
+        $file = $request->file('document');
+        $fileName = $file->getClientOriginalName();
+        $fileName = time().$fileName;
+        $file->storeAs(path: 'public/uploads', name: $fileName);
+
+        $document->update([
+            'titre' => $titre,
+            'document' => $fileName,
+            'date_de_publication' => $document->date_de_publication,
+            'user_id' => $document->user_id
+        ]);
+
+        return redirect()->route('document.index')->with('success', 'Document uploaded successfully!');
 
     }
 

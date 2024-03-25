@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Modification post')
+@section('title', 'Edit article')
 @section('content')
 
 <div class="d-flex row justify-content-center">

@@ -23,7 +23,7 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-
+        //Cricket noises
     }
 
     /**
@@ -74,7 +74,9 @@ class DocumentController extends Controller
     public function edit(Document $document)
     {
 
-        return view('documents.edit', ["document" => $document]);
+        if(Auth::id() === $document->user_id){
+            return view('documents.edit', ["document" => $document]);
+        }
 
     }
 
@@ -90,10 +92,13 @@ class DocumentController extends Controller
             'document'   => 'required|file|mimes:pdf,zip,doc'
         ]);
 
+
+        //Récupération des titres anglais/français
         $titre = [
             'en' => $request->titre_en,
         ];
         if($request->titre_fr != null) { $titre = $titre + ['fr' => $request->titre_fr];};
+
 
         //Envoi le fichier dans le dossier uploads dans storage/app/public
         $file = $request->file('document');
@@ -108,7 +113,7 @@ class DocumentController extends Controller
             'user_id' => $document->user_id
         ]);
 
-        return redirect()->route('document.index')->with('success', 'Document uploaded successfully!');
+        return redirect()->route('document.index')->with('success', 'Document edited successfully!');
 
     }
 
@@ -119,9 +124,12 @@ class DocumentController extends Controller
     {
 
         if(Auth::id() === $document->user_id){
+            //Supprime le fichier dans le dossier uploads dans storage/app/public (Fait défaut, ne supprime pas)
             File::delete(app_path().'/public/uploads/'.$document->document);
+
+            //Suppression de la base de données
             $document->delete();
-            return redirect()->route('document.index')->with('success', 'Document supprimer avec succès!');
+            return redirect()->route('document.index')->with('success', 'Document deleted successfully!');
         }
         return redirect()->route('document.index');
 

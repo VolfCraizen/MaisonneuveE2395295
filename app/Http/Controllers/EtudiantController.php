@@ -114,6 +114,7 @@ class EtudiantController extends Controller
      */
     public function destroy(Etudiant $etudiant)
     {
+        //Suppression de la base de données
         $etudiant->delete();
         return redirect()->route('etudiant.index')->with('success', 'Étudiant supprimer avec succès!');
     }

@@ -118,6 +118,8 @@ class PostController extends Controller
     public function destroy(posts $post)
     {
         if(Auth::id() === $post->user_id){
+            
+            //Suppression de la base de données
             $post->delete();
             return redirect()->route('post.index')->with('success', 'Post supprimer avec succès!');
         }

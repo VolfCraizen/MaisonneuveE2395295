@@ -54,7 +54,7 @@ class AuthController extends Controller
         
         //Intended va rediriger vers la page que la personne essayait d'entrer avant de redirger vers la page par défaut. 
         //Ex: Si http://localhost:8000/users est la page qui à causer la demande de login, c'est là que l'utilisateur va être envoyer une fois connecté.
-        return redirect()->intended(route('etudiant.index'))->withSuccess('Signed in');
+        return redirect()->intended(route('home'))->withSuccess('Signed in');
     }
 
     /**

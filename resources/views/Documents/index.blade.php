@@ -22,13 +22,13 @@
                     @foreach($documents as $document)
                     <tr>
                         <td>{{ isset($document->titre[app()->getLocale()]) ? $document->titre[app()->getLocale()] : $document->titre["en"] }}</td>
-                        <td>{{ $document->document }}</td>
+                        <td><a href="{{route('document.show', $document->id)}}">{{ $document->document }}</a></td>
                         <td>{{ $document->date_de_publication }}</td>
                         <td>{{ $document->user->name }}</td>
 
                         <!-- Vérification de l'utilisateur -->
                         @if(auth()->user()->id === $document->user_id)
-                            <th> <a class="btn btn-secondary" href="{{route('document.edit', $document->id)}}">@lang('lang.edit')</a></th>
+                            <th> <a class="btn btn-secondary" href="{{route('document.download', $document->id)}}">@lang('lang.edit')</a></th>
                             <th>            
                                 <form action="{{route('document.delete', $document->id)}}" method="post">
                                     @csrf

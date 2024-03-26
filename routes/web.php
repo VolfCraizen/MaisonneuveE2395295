@@ -44,12 +44,14 @@ Route::middleware('auth')->group(function(){
     Route::post('/create/post', [PostController::class, 'store'])->name('post.store');
     Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('post.delete');
     Route::get('/edit/post/{post}', [PostController::class, 'edit'])->name('post.edit');
+    Route::put('/edit/post/{post}', [PostController::class, 'update'])->name('post.update');
 
     Route::get('/create/document', [DocumentController::class, 'create'])->name('document.create');
     Route::post('/create/document', [DocumentController::class, 'store'])->name('document.store');
     Route::get('/edit/document/{document}', [DocumentController::class, 'edit'])->name('document.edit');
     Route::put('/edit/document/{document}', [DocumentController::class, 'update'])->name('document.update');
     Route::delete('/document/{document}', [DocumentController::class, 'destroy'])->name('document.delete');
+    Route::get('/document/{document}', [DocumentController::class, 'download'])->name('document.download');
 
 });
 

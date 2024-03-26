@@ -55,7 +55,7 @@ class PostController extends Controller
             'user_id' => Auth::id()
         ]);
 
-        return redirect()->route('post.show', $post->id)->with('success', 'Post created successfully!');
+        return redirect()->route('post.show', $post->id)->with('success', 'Article created successfully!');
     }
 
     /**
@@ -109,7 +109,7 @@ class PostController extends Controller
             'user_id' => Auth::id()
         ]);
 
-        return back()->withSuccess('Post created successfully!');
+        return redirect()->route('post.show', $post->id)->with('success', 'Article edited successfully!');
     }
 
     /**
@@ -121,7 +121,7 @@ class PostController extends Controller
             
             //Suppression de la base de données
             $post->delete();
-            return redirect()->route('post.index')->with('success', 'Post supprimer avec succès!');
+            return redirect()->route('post.index')->with('success', 'Article deleted successfully!');
         }
         return redirect()->route('post.index');
     }

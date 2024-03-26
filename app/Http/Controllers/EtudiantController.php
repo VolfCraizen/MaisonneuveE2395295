@@ -63,12 +63,13 @@ class EtudiantController extends Controller
         ]);
 
         $user = User::create([
+            'id' => $etudiant->id,
             'name' => $request->nom,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
 
-        return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Étudiant créer avec succès!');
+        return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Student created successfully!');
     }
 
     /**
@@ -106,7 +107,7 @@ class EtudiantController extends Controller
             'ville_id' => $request->ville_id
         ]);
 
-        return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Étudiant modifier avec succès!');
+        return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Student edited successfully!');
     }
 
     /**
@@ -116,6 +117,6 @@ class EtudiantController extends Controller
     {
         //Suppression de la base de données
         $etudiant->delete();
-        return redirect()->route('etudiant.index')->with('success', 'Étudiant supprimer avec succès!');
+        return redirect()->route('etudiant.index')->with('success', 'Student deleted successfully!');
     }
 }

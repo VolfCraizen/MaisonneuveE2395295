@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 
 class DocumentController extends Controller
@@ -23,7 +24,7 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        //Cricket noises
+        
     }
 
     /**
@@ -116,6 +117,12 @@ class DocumentController extends Controller
         return redirect()->route('document.index')->with('success', 'Document edited successfully!');
 
     }
+
+    public function download(Document $document)
+    {
+        return Storage::download('public/uploads/'.$document->document);
+    }
+
 
     /**
      * Remove the specified resource from storage.

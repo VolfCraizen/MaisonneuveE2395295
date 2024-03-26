@@ -1,8 +1,16 @@
 @extends('layouts.app')
-@section('title', 'Ajout étudiant')
+@section('title', 'Login')
 @section('content')
 
-
+@if(!$errors->isEmpty())
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 <div class="d-flex row justify-content-center">
     <div class="col-md-10">
@@ -17,21 +25,11 @@
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="email" class="form-title fs-4">@lang('lang.email') : </label>
                             <input class="w-75" type="email" id="email" name="email" value="{{old('email')}}">
-                            @if($errors->has('email'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('email')}}
-                            </div>
-                            @endif
                         </div>
 
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="password" class="form-title fs-4">@lang('lang.password') : </label>
                             <input class="w-75" type="password" id="password" name="password" value="{{old('password')}}">
-                            @if($errors->has('password'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('password')}}
-                            </div>
-                            @endif
                         </div>
 
                         <div class="mb-3 d-flex row justify-content-center mt-5">

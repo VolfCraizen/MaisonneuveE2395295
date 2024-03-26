@@ -48,45 +48,81 @@ class PostController extends Controller
         ];
         if($request->texte_fr != null) { $texte = $texte + ['fr' => $request->texte_fr];};
         
-        posts::create([
+        $post = posts::create([
             'titre' => $titre,
             'texte' => $texte,
             'date_de_creation' => date('Y-m-d'),
             'user_id' => Auth::id()
         ]);
 
-        return back()->withSuccess('Post created successfully!');
+        return redirect()->route('post.show', $post->id)->with('success', 'Article created successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(posts $posts)
+    public function show(Posts $post)
     {
-        //
+        return view('posts.show', ["post" => $post]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(posts $posts)
+    public function edit(posts $post)
     {
-        //
+        //Check si user actuelle peux entrer
+        if(Auth::id() === $post->user_id){
+            return view('posts.edit', ["post" => $post]);
+        }
+
+        //Sinon, retour à la'accueil
+        return redirect()->route('post.index');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, posts $posts)
+    public function update(Request $request, posts $post)
     {
-        //
+        $request->validate([
+            'titre_en' => 'required|max:50',
+            'texte_en' => 'required|max:255',
+            'titre_fr' => 'max:50',
+            'texte_fr' => 'max:255',
+        ]);
+
+        $titre = [
+            'en' => $request->titre_en,
+        ];
+        if($request->titre_fr != null) { $titre = $titre + ['fr' => $request->titre_fr];};
+
+        $texte = [
+            'en' => $request->texte_en,
+        ];
+        if($request->texte_fr != null) { $texte = $texte + ['fr' => $request->texte_fr];};
+        
+        $post->update([
+            'titre' => $titre,
+            'texte' => $texte,
+            'date_de_creation' => $post->date_de_creation,
+            'user_id' => Auth::id()
+        ]);
+
+        return redirect()->route('post.show', $post->id)->with('success', 'Article edited successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(posts $posts)
+    public function destroy(posts $post)
     {
-        //
+        if(Auth::id() === $post->user_id){
+            
+            //Suppression de la base de données
+            $post->delete();
+            return redirect()->route('post.index')->with('success', 'Article deleted successfully!');
+        }
+        return redirect()->route('post.index');
     }
 }

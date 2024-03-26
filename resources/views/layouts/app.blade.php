@@ -15,7 +15,6 @@
         <nav class="navbar navbar-expand-sm justify-content-end" aria-label="Third navbar example">
             @auth
                 <a class="btn btn-secondary me-3" href="{{route('logout')}}">@lang('lang.logout')</a>
-                <a class="btn btn-secondary me-3" href="{{route('etudiant.create')}}">@lang('lang.etudiant_create')</a>
             @else
                 <a class="btn btn-secondary me-3" href="{{route('login')}}">@lang('lang.login')</a>
             @endauth

@@ -13,11 +13,11 @@ class AuthController extends Controller
      */
     public function index()
     {
-        //
+        //Cricket noises
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Login
      */
     public function create()
     {
@@ -25,13 +25,11 @@ class AuthController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Validation du login
      */
     public function store(Request $request)
     {
         $request->validate([
-            //Cette regex permet de voir si il y a un . et quelque chose après
-            //'email' => 'required|regex:/(.+)@(.+)\.(.+)/i|exists:users',
             'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
             'password' => 'min:6|max:20'
         ]);
@@ -49,12 +47,10 @@ class AuthController extends Controller
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
         Auth::login($user);
 
-        // $userId = Auth::id();
-        // return $userId;
         
         //Intended va rediriger vers la page que la personne essayait d'entrer avant de redirger vers la page par défaut. 
         //Ex: Si http://localhost:8000/users est la page qui à causer la demande de login, c'est là que l'utilisateur va être envoyer une fois connecté.
-        return redirect()->intended(route('etudiant.index'))->withSuccess('Signed in');
+        return redirect()->intended(route('home'))->withSuccess('Signed in');
     }
 
     /**
@@ -62,7 +58,7 @@ class AuthController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //Cricket noises
     }
 
     /**
@@ -70,7 +66,7 @@ class AuthController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //Cricket noises
     }
 
     /**
@@ -78,11 +74,11 @@ class AuthController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //Cricket noises
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Logout
      */
     public function destroy()
     {

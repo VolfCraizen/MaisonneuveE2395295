@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Étudiants')
+@section('title', 'Forum')
 
 @section('content')
 
@@ -11,19 +11,17 @@
         <div class="col-md-10">
             <div class="card mb-5">
                 <div class="card-header d-flex justify-content-between">
-                    <h4 class="card-title">{{isset($post->titre[app()->getLocale()]) ? $post->titre[$locale] : $post->titre["en"]}}</h4>
-                    <h4 class="card-title">@lang('lang.author') : {{$post->user_id}}</h4>
+                    <h4 class="card-title">{{isset($post->titre[app()->getLocale()]) ? $post->titre[app()->getLocale()] : $post->titre["en"]}}</h4>
+                    <h4 class="card-title">@lang('lang.author') : {{$post->user->name}}</h4>
                 </div>
 
                 <div class="card-body">
                     <div class="d-flex justify-content-center gap-3">
-
-                        <p>{{isset($post->texte[app()->getLocale()]) ? $post->texte[$locale] : $post->texte["en"]}}</p>
-
-                        @auth
-                        
-                        @endauth
+                        <p>{{isset($post->texte[app()->getLocale()]) ? $post->texte[app()->getLocale()] : $post->texte["en"]}}</p>
                     </div>
+                    <div>
+                        <a class="btn btn-primary" href="{{route('post.show', $post->id)}}">@lang('lang.show')</a>
+                    </div>   
                 </div>
             </div>
         </div>
@@ -32,11 +30,13 @@
         <div class="alert alert-danger">Il n'y a aucun étudiant</div>
 
     @endforelse
-    <div>
+    <div class="col-md-10">
+        <!-- Pagination -->
         {{ $posts }}
         <a class="btn btn-primary w-25" href="{{route('post.create')}}">@lang('lang.post_create')</a>
     </div>
 
 </div>
+
 
 @endsection

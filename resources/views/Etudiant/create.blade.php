@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Ajout étudiant')
+@section('title', 'Create student')
 @section('content')
 
 @php $locale = session()->get('locale') @endphp

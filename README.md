@@ -1,5 +1,6 @@
 
-<video controls src="Welcome - Google Chrome 2024-03-25 20-16-11.mp4" title="Title"></video>
+https://www.youtube.com/watch?v=nweSrDN2Moc<VIDEO ID>
+https://img.youtube.com/vi/<VIDEO ID>/maxresdefault.jpg
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>

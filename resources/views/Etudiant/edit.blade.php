@@ -2,6 +2,16 @@
 @section('title', 'Edit student')
 @section('content')
 
+@if(!$errors->isEmpty())
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="d-flex row justify-content-center">
     <div class="col-md-10">
             <div class="card">
@@ -15,56 +25,26 @@
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="nom" class="form-title fs-4">Nom : </label>
                             <input class="w-75" type="text" id="nom" name="nom" value="{{old('nom', $etudiant->nom)}}">
-                            @if($errors->has('nom'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('nom')}}
-                            </div>
-                            @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="password" class="form-title fs-4">@lang('lang.password') : </label>
                             <input class="w-75" type="password" id="password" name="password">
-                            @if($errors->has('password'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('password')}}
-                            </div>
-                            @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="adresse" class="form-title fs-4">@lang('lang.adress') : </label>
                             <input class="w-75" type="text" id="adresse" name="adresse" value="{{old('adresse', $etudiant->adresse)}}">
-                            @if($errors->has('adresse'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('adresse')}}
-                            </div>
-                            @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="telephone" class="form-title fs-4">@lang('lang.phone') : </label>
                             <input class="w-75" type="text" id="telephone" name="telephone" value="{{old('telephone', $etudiant->telephone)}}">
-                            @if($errors->has('telephone'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('telephone')}}
-                            </div>
-                            @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="email" class="form-title fs-4">@lang('lang.email') : </label>
                             <input class="w-75" type="email" id="email" name="email" value="{{old('email', $etudiant->email)}}">
-                            @if($errors->has('email'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('email')}}
-                            </div>
-                            @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="date_de_naissance" class="form-title fs-4">@lang('lang.DoB') : </label>
                             <input class="w-75" type="date" id="date_de_naissance" name="date_de_naissance" value="{{old('date_de_naissance', $etudiant->date_de_naissance)}}">
-                            @if($errors->has('date_de_naissance'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('date_de_naissance')}}
-                            </div>
-                            @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="ville_id" class="form-title fs-4">@lang('lang.city') : </label>
@@ -77,11 +57,6 @@
                                     @endif
                                 @endforeach
                             </select>
-                            @if($errors->has('ville_id'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('ville_id')}}
-                            </div>
-                            @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center mt-5">
                             <button type="submit" class="btn btn-secondary w-50">@lang('lang.edit')</button>

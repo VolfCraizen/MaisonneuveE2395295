@@ -34,11 +34,6 @@
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="texte_en" class="form-title fs-4">@lang('lang.text') : </label>
                             <textarea class="w-75" name="texte_en" id="" cols="30" rows="10" value="{{old('texte_en')}}"></textarea>
-                            @if($errors->has('texte_en'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('texte_en')}}
-                            </div>
-                            @endif
                         </div>
 
                         <!-- FR -->
@@ -47,20 +42,10 @@
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="titre_fr" class="form-title fs-4">@lang('lang.title') : </label>
                             <input class="w-75" type="text" id="titre_fr" name="titre_fr" value="{{old('titre_fr')}}">
-                            @if($errors->has('titre_fr'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('titre_fr')}}
-                            </div>
-                            @endif
                         </div>
                         <div class="mb-3 d-flex row justify-content-center text-center">
                             <label for="texte_fr" class="form-title fs-4">@lang('lang.text') : </label>
                             <textarea class="w-75" name="texte_fr" id="" cols="30" rows="10" value="{{old('texte_fr')}}"></textarea>
-                            @if($errors->has('texte_fr'))
-                            <div class="text-danger mt-2">
-                                {{$errors->first('texte_fr')}}
-                            </div>
-                            @endif
                         </div>
 
                         <!-- End -->
